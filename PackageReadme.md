@@ -19,24 +19,27 @@ services.AddFreecurrencyAPI(o =>
 
 Returns your current quota
 ``` csharp
-    var statusResponse = await api.GetStatusAsync();
+IFreecurrency api = // get from DI
+var statusResponse = await api.GetStatusAsync();
 ```
 
 ### Currencies
 
 Returns all supported currency/currencies
 ``` csharp
-    var currencyResponse = await api.GetCurrency("EUR");
+IFreecurrency api = // get from DI
+var currencyResponse = await api.GetCurrency("EUR");
 
-    var currenciesResponse = await api.GetCurrencies(new [] { "EUR", "USD" });
+var currenciesResponse = await api.GetCurrencies(new [] { "EUR", "USD" });
 
-    var allCurrenciesResponse = await api.GetCurrencies();
+var allCurrenciesResponse = await api.GetCurrencies();
 ```
 
 ### Latest Exchange Rates
 
 Returns the latest exchange rates. The default base currency is USD.
 ``` csharp
+IFreecurrency api = // get from DI
 var rates = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new [ CurrencyCodes.EUR, CurrencyCodes.AUD ]);
 
 var rate = await _api.GetLatestExchangeRateAsync(CurrencyCodes.USD, CurrencyCodes.EUR);
@@ -99,3 +102,6 @@ public class FreecurrencyAPIOptions
     public int GetCurrenciesCacheExpirationInHours { get; set; } = 24;
 }
 ```
+
+## References
+- https://freecurrencyapi.com/docs/
