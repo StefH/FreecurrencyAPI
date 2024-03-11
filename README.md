@@ -28,9 +28,9 @@ var statusResponse = await client.GetStatusAsync();
 Returns the latest exchange rates. The default base currency is USD.
 ``` csharp
 IFreecurrencyClient client = // get from DI
-var rates = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new [ CurrencyCodes.EUR, CurrencyCodes.AUD ]);
+var rates = await _client.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new [ CurrencyCodes.EUR, CurrencyCodes.AUD ]);
 
-var rate = await _api.GetLatestExchangeRateAsync(CurrencyCodes.USD, CurrencyCodes.EUR);
+var rate = await _client.GetLatestExchangeRateAsync(CurrencyCodes.USD, CurrencyCodes.EUR);
 ```
 
 ### Historical Exchange Rates
