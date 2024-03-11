@@ -9,7 +9,7 @@ public class FreecurrencyAPIOptions
     /// The required BaseAddress.
     /// </summary>
     [Required]
-    public Uri BaseAddress { get; set; } = null!;
+    public Uri BaseAddress { get; set; } = new("https://api.freecurrencyapi.com/v1");
 
     [Required]
     public string ApiKey { get; set; } = null!;

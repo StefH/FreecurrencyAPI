@@ -22,17 +22,22 @@ internal class Worker
     {
         try
         {
+            var isSupportedX = CurrencyCodes.IsSupported("x");
+
+            var status = await _api.GetStatusAsync(cancellationToken);
+            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetStatusAsync), JsonConvert.SerializeObject(status));
+
+            var allCurrencies = await _api.GetCurrenciesAsync(cancellationToken);
+            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetCurrenciesAsync), JsonConvert.SerializeObject(allCurrencies));
+
             var result = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, CurrencyCodes.EUR, cancellationToken);
-            var content = result.GetContent();
-            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(content));
+            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(result));
 
             var resultMultiple = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new[] { CurrencyCodes.EUR, CurrencyCodes.CAD }, cancellationToken);
-            var contentMultiple = resultMultiple.GetContent();
-            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(contentMultiple));
+            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(resultMultiple));
 
             var resultAll = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, cancellationToken);
-            var contentAll = resultAll.GetContent();
-            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(contentAll));
+            _logger.LogInformation("{method}|{result}", nameof(IFreecurrencyAPI.GetLatestExchangeRatesAsync), JsonConvert.SerializeObject(resultAll));
         }
         catch (Exception ex)
         {

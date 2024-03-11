@@ -34,7 +34,7 @@ static class Program
         services.AddLogging(builder => builder.AddSerilog(logger: Log.Logger, dispose: true));
 
         services.AddFreecurrencyAPI(configuration);
-
+        
         services.AddSingleton<Worker>();
 
         return services.BuildServiceProvider();
