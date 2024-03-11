@@ -43,7 +43,7 @@ Returns the latest exchange rates. The default base currency is USD.
 
 ### Currencies
 
-Returns all supported currency/currencies
+Returns all supported currencies
 ``` csharp
 IFreecurrencyClient client = // get from DI
 var currencyResponse = await client.GetCurrency("EUR");
