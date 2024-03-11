@@ -11,8 +11,8 @@
 		<PackageProjectUrl>https://github.com/StefH/FreecurrencyAPI</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/StefH/https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
-		<PackageTags>FreecurrencyAPI;Freecurrency;rest;api;restease;</PackageTags>
+		<RepositoryUrl>https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
+		<PackageTags>FreecurrencyAPI;Freecurrency;rest;api;restease;currency;currencies;rates</PackageTags>
 		<Description></Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>

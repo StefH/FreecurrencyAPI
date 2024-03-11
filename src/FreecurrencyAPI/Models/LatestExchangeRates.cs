@@ -2,7 +2,7 @@
 
 public class LatestExchangeRates
 {
-    public IDictionary<string, double> Data { get; set; } = null!;
+    public IDictionary<string, decimal> Data { get; set; } = null!;
 
-    public double Rate => Data.First().Value;
+    public decimal Rate => Data.First().Value;
 }

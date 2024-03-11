@@ -17,7 +17,7 @@ static class Program
             .WriteTo.Console(theme: AnsiConsoleTheme.Code)
             .CreateLogger();
 
-        await using ServiceProvider serviceProvider = RegisterServices(args);
+        await using var serviceProvider = RegisterServices(args);
 
         var worker = serviceProvider.GetRequiredService<Worker>();
 
