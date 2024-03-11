@@ -41,7 +41,7 @@ public interface IFreecurrencyAPI
     Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Get Latest Exchange Rates
+    /// Returns all supported currencies
     /// </summary>
     /// <param name="currencies">A list of comma-separated currency codes which you want to get (EUR,USD,CAD).</param>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
