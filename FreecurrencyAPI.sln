@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94D1D405-E9C2-4FB3-A220-1E5C4AB2C2B4}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src-examples", "src-examples", "{6F341AD1-BB1C-4CCF-91B7-F55688619CEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A9880FB-CAF7-4373-8877-3EFA092736C0}"
+	ProjectSection(SolutionItems) = preProject
+		Generate-ReleaseNotes.bat = Generate-ReleaseNotes.bat
+		PackageReadme.md = PackageReadme.md
+		PackageReleaseNotes.template = PackageReleaseNotes.template
+		PackageReleaseNotes.txt = PackageReleaseNotes.txt
+		README.md = README.md
+		ReleaseNotes.md = ReleaseNotes.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CEFF40B4-4435-408E-B0B9-F93903A8B470}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreecurrencyAPI", "src\FreecurrencyAPI\FreecurrencyAPI.csproj", "{5AAFC79A-8F40-43CC-AB6B-0F9F38037863}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreecurrencyAPI.ConsoleApp", "examples\FreecurrencyAPI.ConsoleApp\FreecurrencyAPI.ConsoleApp.csproj", "{11911A31-CA6F-417E-B319-7266C1B1D1C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AAFC79A-8F40-43CC-AB6B-0F9F38037863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAFC79A-8F40-43CC-AB6B-0F9F38037863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAFC79A-8F40-43CC-AB6B-0F9F38037863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAFC79A-8F40-43CC-AB6B-0F9F38037863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11911A31-CA6F-417E-B319-7266C1B1D1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11911A31-CA6F-417E-B319-7266C1B1D1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11911A31-CA6F-417E-B319-7266C1B1D1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11911A31-CA6F-417E-B319-7266C1B1D1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AAFC79A-8F40-43CC-AB6B-0F9F38037863} = {94D1D405-E9C2-4FB3-A220-1E5C4AB2C2B4}
+		{11911A31-CA6F-417E-B319-7266C1B1D1C1} = {6F341AD1-BB1C-4CCF-91B7-F55688619CEE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45F31459-D6F5-441C-890A-F02A1328053D}
+	EndGlobalSection
+EndGlobal
