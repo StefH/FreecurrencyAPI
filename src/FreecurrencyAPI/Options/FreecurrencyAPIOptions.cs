@@ -41,11 +41,13 @@ public class FreecurrencyAPIOptions
     /// The cache expiration time in minutes for the latest exchange rates.
     /// Default value is 60 minutes.
     /// </summary>
+    [Range(0, int.MaxValue)]
     public int GetLatestExchangeRatesCacheExpirationInMinutes { get; set; } = 60;
 
     /// <summary>
     /// The cache expiration time in hours for the currencies.
     /// Default value is 24 hours.
     /// </summary>
+    [Range(0, int.MaxValue)]
     public int GetCurrenciesCacheExpirationInHours { get; set; } = 24;
 }
