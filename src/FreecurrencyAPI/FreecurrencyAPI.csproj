@@ -12,7 +12,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
-		<PackageTags>FreecurrencyAPI;Freecurrency;rest;api;restease;currency;currencies;rates</PackageTags>
+		<PackageTags>FreecurrencyAPI;Freecurrency;client;rest;api;restease;currency;currencies;rates</PackageTags>
 		<Description></Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>

@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace FreecurrencyAPI;
 
 [PublicAPI]
-public interface IFreecurrency
+public interface IFreecurrencyClient
 {
     /// <summary>
     /// Get Latest Exchange Rates

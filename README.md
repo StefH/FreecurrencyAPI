@@ -8,7 +8,7 @@ You will need your ApiKey to use freecurrencyapi, you can get one [https://app.f
 Register the api via Dependency Injection:
 
 ``` csharp
-services.AddFreecurrencyAPI(o => 
+services.AddFreecurrencyAPI(o =>
     o.ApiKey = "[YOUR_API_KEY]"
 );
 ```
@@ -19,27 +19,15 @@ services.AddFreecurrencyAPI(o =>
 
 Returns your current quota
 ``` csharp
-IFreecurrency api = // get from DI
-var statusResponse = await api.GetStatusAsync();
-```
-
-### Currencies
-
-Returns all supported currency/currencies
-``` csharp
-IFreecurrency api = // get from DI
-var currencyResponse = await api.GetCurrency("EUR");
-
-var currenciesResponse = await api.GetCurrencies(new [] { "EUR", "USD" });
-
-var allCurrenciesResponse = await api.GetCurrencies();
+IFreecurrencyClient client = // get from DI
+var statusResponse = await client.GetStatusAsync();
 ```
 
 ### Latest Exchange Rates
 
 Returns the latest exchange rates. The default base currency is USD.
 ``` csharp
-IFreecurrency api = // get from DI
+IFreecurrencyClient client = // get from DI
 var rates = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new [ CurrencyCodes.EUR, CurrencyCodes.AUD ]);
 
 var rate = await _api.GetLatestExchangeRateAsync(CurrencyCodes.USD, CurrencyCodes.EUR);
@@ -51,6 +39,18 @@ Returns the latest exchange rates. The default base currency is USD.
 
 ``` csharp
 // todo
+```
+
+### Currencies
+
+Returns all supported currency/currencies
+``` csharp
+IFreecurrencyClient client = // get from DI
+var currencyResponse = await client.GetCurrency("EUR");
+
+var currenciesResponse = await client.GetCurrencies(new [] { "EUR", "USD" });
+
+var allCurrenciesResponse = await client.GetCurrencies();
 ```
 
 ### Options

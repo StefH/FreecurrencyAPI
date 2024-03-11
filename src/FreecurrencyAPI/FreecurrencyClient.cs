@@ -7,14 +7,14 @@ using Stef.Validation;
 
 namespace FreecurrencyAPI;
 
-internal class Freecurrency : IFreecurrency
+internal class FreecurrencyClient : IFreecurrencyClient
 {
     private readonly IFreecurrencyApiInternal _api;
     private readonly IMemoryCache _cache;
     private readonly TimeSpan _getLatestExchangeRatesCacheExpirationInSeconds;
     private readonly TimeSpan _getCurrenciesCacheExpirationInHours;
 
-    public Freecurrency(IOptions<FreecurrencyAPIOptions> options, IFreecurrencyApiInternal api, IMemoryCache cache)
+    public FreecurrencyClient(IOptions<FreecurrencyAPIOptions> options, IFreecurrencyApiInternal api, IMemoryCache cache)
     {
         Guard.NotNull(options);
         _api = Guard.NotNull(api);

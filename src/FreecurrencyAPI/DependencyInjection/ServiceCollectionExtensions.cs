@@ -73,7 +73,7 @@ public static class ServiceCollectionExtensions
                 }
             });
 
-        services.AddScoped<IFreecurrency, Freecurrency>();
+        services.AddScoped<IFreecurrencyClient, FreecurrencyClient>();
 
         return services;
     }
