@@ -36,4 +36,16 @@ public class FreecurrencyAPIOptions
     /// In addition to Network failures, TaskCanceledException, HTTP 5XX and HTTP 408. Also retry these <see cref="HttpStatusCode"/>s. [Optional]
     /// </summary>
     public HttpStatusCode[]? HttpStatusCodesToRetry { get; set; }
+
+    /// <summary>
+    /// The cache expiration time in minutes for the latest exchange rates.
+    /// Default value is 60 minutes.
+    /// </summary>
+    public int GetLatestExchangeRatesCacheExpirationInMinutes { get; set; } = 60;
+
+    /// <summary>
+    /// The cache expiration time in hours for the currencies.
+    /// Default value is 24 hours.
+    /// </summary>
+    public int GetCurrenciesCacheExpirationInHours { get; set; } = 24;
 }

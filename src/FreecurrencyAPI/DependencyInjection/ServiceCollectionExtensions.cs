@@ -1,4 +1,5 @@
 ﻿using FreecurrencyAPI;
+using FreecurrencyAPI.Internal;
 using FreecurrencyAPI.Options;
 using FreecurrencyAPI.RetryPolicies;
 using JetBrains.Annotations;
@@ -55,20 +56,24 @@ public static class ServiceCollectionExtensions
 
         services.AddOptionsWithDataAnnotationValidation(options);
 
+        services.AddMemoryCache();
+
         services
             .AddHttpClient(options.HttpClientName!, httpClient =>
             {
                 httpClient.BaseAddress = options.BaseAddress;
                 httpClient.Timeout = TimeSpan.FromSeconds(options.TimeoutInSeconds);
             })
-            .AddPolicyHandler((serviceProvider, _) => HttpClientRetryPolicies.GetPolicy<IFreecurrencyAPI>(serviceProvider, options.MaxRetries, options.HttpStatusCodesToRetry))
-            .UseWithRestEaseClient(new UseWithRestEaseClientOptions<IFreecurrencyAPI>
+            .AddPolicyHandler((serviceProvider, _) => HttpClientRetryPolicies.GetPolicy<IFreecurrencyApiInternal>(serviceProvider, options.MaxRetries, options.HttpStatusCodesToRetry))
+            .UseWithRestEaseClient(new UseWithRestEaseClientOptions<IFreecurrencyApiInternal>
             {
                 InstanceConfigurer = freecurrencyAPI =>
                 {
                     freecurrencyAPI.ApiKey = options.ApiKey;
                 }
             });
+
+        services.AddScoped<IFreecurrency, Freecurrency>();
 
         return services;
     }

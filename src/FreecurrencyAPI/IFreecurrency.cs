@@ -1,61 +1,67 @@
 ﻿using FreecurrencyAPI.Models;
 using JetBrains.Annotations;
-using RestEase;
 
 namespace FreecurrencyAPI;
 
 [PublicAPI]
-public interface IFreecurrencyAPI
+public interface IFreecurrency
 {
-    [Query("apikey")]
-    string ApiKey { get; set; }
-
-    /// <summary>
-    /// Get Latest Exchange Rates
-    /// </summary>
-    /// <param name="baseCurrency">The base currency to which all results are behaving relative to.</param>
-    /// <param name="currencies">A list of comma-separated currency codes which you want to get (EUR,USD,CAD).</param>
-    /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
-    /// <returns><see cref="LatestExchangeRates"/></returns>
-    [Get("/latest")]
-    [PublicAPI]
-    Task<LatestExchangeRates> GetLatestExchangeRatesAsync([Query("base_currency")] string baseCurrency, [Query] string currencies, CancellationToken cancellationToken = default);
-
     /// <summary>
     /// Get Latest Exchange Rates
     /// </summary>
     /// <param name="baseCurrency">The base currency to which all results are behaving relative to.</param>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [Get("/latest")]
     [PublicAPI]
-    Task<LatestExchangeRates> GetLatestExchangeRatesAsync([Query("base_currency")] string baseCurrency, CancellationToken cancellationToken = default);
+    Task<LatestExchangeRates> GetLatestExchangeRatesAsync(string baseCurrency, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get Latest Exchange Rates
+    /// </summary>
+    /// <param name="baseCurrency">The base currency to which all results are behaving relative to.</param>
+    /// <param name="currencies">A list of currency codes which you want to get.</param>
+    /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
+    /// <returns><see cref="LatestExchangeRates"/></returns>
+    Task<LatestExchangeRates> GetLatestExchangeRatesAsync(string baseCurrency, string[] currencies, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get Latest Exchange Rate
+    /// </summary>
+    /// <param name="baseCurrency">The base currency to which all results are behaving relative to.</param>
+    /// <param name="currency">The currency you want to get.</param>
+    /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
+    /// <returns><see cref="LatestExchangeRates"/></returns>
+    Task<LatestExchangeRates> GetLatestExchangeRateAsync(string baseCurrency, string currency, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns all supported currencies
     /// </summary>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [Get("/currencies")]
     [PublicAPI]
     Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Returns all supported currencies
+    /// Returns currencies
     /// </summary>
-    /// <param name="currencies">A list of comma-separated currency codes which you want to get (EUR,USD,CAD).</param>
+    /// <param name="currencies">A list of currency codes which you want to get.</param>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [Get("/currencies")]
-    [PublicAPI]
-    Task<Currencies> GetCurrenciesAsync([Query] string currencies, CancellationToken cancellationToken = default);
+    Task<Currencies> GetCurrenciesAsync(string[] currencies, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Returns currency
+    /// </summary>
+    /// <param name="currency">The currency you want to get.</param>
+    /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
+    /// <returns><see cref="LatestExchangeRates"/></returns>
+    Task<Currency> GetCurrencyAsync(string currency, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns your current quota
     /// </summary>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [Get("/status")]
     [PublicAPI]
     Task<Status> GetStatusAsync(CancellationToken cancellationToken = default);
 }
