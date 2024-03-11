@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<Version>0.0.1-preview-01</Version>
+		<PackageId>Freecurrency-API</PackageId>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
 		<ApplicationIcon>../../resources/icon.ico</ApplicationIcon>
 		<Copyright>Copyright © 2024 Stef Heyenrath</Copyright>
@@ -12,8 +13,9 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
-		<PackageTags>FreecurrencyAPI;Freecurrency;client;rest;api;restease;currency;currencies;rates</PackageTags>
-		<Description></Description>
+		<PackageTags>FreecurrencyAPI;Freecurrency;client;rest;api;restease;currency;currencies;rates;foreign exchange rates;exchange rates api;rates api;freecurrencyapi;exchange rates;free currency api;currency api</PackageTags>
+		<Title>freecurrencyapi</Title>
+		<Description>This unofficial RestEase client enables working with freecurrencyapi (https://freecurrencyapi.com)</Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>
 
