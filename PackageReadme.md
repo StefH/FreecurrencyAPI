@@ -19,15 +19,15 @@ services.AddFreecurrencyAPI(o =>
 
 Returns your current quota
 ``` csharp
-IFreecurrencyApi api = // get from DI
-var statusResponse = await api.GetStatusAsync();
+IFreecurrencyClient client = // get from DI
+var statusResponse = await client.GetStatusAsync();
 ```
 
 ### Latest Exchange Rates
 
 Returns the latest exchange rates. The default base currency is USD.
 ``` csharp
-IFreecurrencyApi api = // get from DI
+IFreecurrencyClient client = // get from DI
 var rates = await _api.GetLatestExchangeRatesAsync(CurrencyCodes.USD, new [ CurrencyCodes.EUR, CurrencyCodes.AUD ]);
 
 var rate = await _api.GetLatestExchangeRateAsync(CurrencyCodes.USD, CurrencyCodes.EUR);
@@ -45,12 +45,12 @@ Returns the latest exchange rates. The default base currency is USD.
 
 Returns all supported currency/currencies
 ``` csharp
-IFreecurrencyApi api = // get from DI
-var currencyResponse = await api.GetCurrency("EUR");
+IFreecurrencyClient client = // get from DI
+var currencyResponse = await client.GetCurrency("EUR");
 
-var currenciesResponse = await api.GetCurrencies(new [] { "EUR", "USD" });
+var currenciesResponse = await client.GetCurrencies(new [] { "EUR", "USD" });
 
-var allCurrenciesResponse = await api.GetCurrencies();
+var allCurrenciesResponse = await client.GetCurrencies();
 ```
 
 ### Options
