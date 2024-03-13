@@ -1,5 +1,4 @@
 ﻿using FreecurrencyAPI.Models;
-using JetBrains.Annotations;
 using RestEase;
 
 namespace FreecurrencyAPI.Internal;

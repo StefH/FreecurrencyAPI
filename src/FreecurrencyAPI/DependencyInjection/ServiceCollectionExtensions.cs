@@ -2,11 +2,9 @@
 using FreecurrencyAPI.Internal;
 using FreecurrencyAPI.Options;
 using FreecurrencyAPI.RetryPolicies;
-using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestEase.HttpClientFactory;
-using Stef.Validation;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;

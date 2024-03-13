@@ -1,5 +1,6 @@
 ﻿namespace FreecurrencyAPI.Models;
 
+[PublicAPI]
 public class QuotaDetails
 {
     public int Total { get; set; }

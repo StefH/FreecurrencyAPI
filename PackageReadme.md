@@ -1,4 +1,4 @@
-# FreecurrencyAPI
+# Freecurrency-API
 Unofficial [RestEase](https://github.com/canton7/RestEase) C# Client for [freecurrencyapi](https://app.freecurrencyapi.com) which uses [IMemoryCache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory) to cache the results.
 
 ## Configuration
@@ -93,12 +93,14 @@ public class FreecurrencyAPIOptions
     /// The cache expiration time in minutes for the latest exchange rates.
     /// Default value is 60 minutes.
     /// </summary>
+    [Range(0, int.MaxValue)]
     public int GetLatestExchangeRatesCacheExpirationInMinutes { get; set; } = 60;
 
     /// <summary>
     /// The cache expiration time in hours for the currencies.
     /// Default value is 24 hours.
     /// </summary>
+    [Range(0, int.MaxValue)]
     public int GetCurrenciesCacheExpirationInHours { get; set; } = 24;
 }
 ```

@@ -2,6 +2,7 @@
 
 namespace FreecurrencyAPI.Models;
 
+[PublicAPI]
 public class Currency
 {
     public string Symbol { get; set; } = null!;
@@ -9,7 +10,7 @@ public class Currency
     public string Name { get; set; } = null!;
 
     [JsonProperty("symbol_native")]
-    public string SymbolNative { get; set; }
+    public string SymbolNative { get; set; } = null!;
 
     [JsonProperty("decimal_digits")]
     public int DecimalDigits { get; set; }

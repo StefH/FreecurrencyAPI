@@ -2,6 +2,7 @@
 
 namespace FreecurrencyAPI.Models;
 
+[PublicAPI]
 public class Status
 {
     [JsonProperty("account_id")]
