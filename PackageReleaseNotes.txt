@@ -1,0 +1,4 @@
+# 0.0.1 (13 March 2024)
+- #1 Initial code [enhancement]
+
+The full release notes can be found here: https://github.com/StefH/ProtoBufJsonConverter/blob/main/ReleaseNotes.md
