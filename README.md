@@ -1,11 +1,14 @@
 # Freecurrency-API
 Unofficial [RestEase](https://github.com/canton7/RestEase) C# Client for [freecurrencyapi](https://app.freecurrencyapi.com) which uses [IMemoryCache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory) to cache the results.
 
+## NuGet
+[![NuGet Badge](https://buildstats.info/nuget/Freecurrency-API)](https://www.nuget.org/packages/Freecurrency-API) 
+
 ## Configuration
 
 You will need your ApiKey to use freecurrencyapi, you can get one [https://app.freecurrencyapi.com/register](https://app.fxapi.com/register).
 
-Register the api via Dependency Injection:
+Register the client via Dependency Injection:
 
 ``` csharp
 services.AddFreecurrencyAPI(o =>

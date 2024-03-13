@@ -5,7 +5,7 @@ Unofficial [RestEase](https://github.com/canton7/RestEase) C# Client for [freecu
 
 You will need your ApiKey to use freecurrencyapi, you can get one [https://app.freecurrencyapi.com/register](https://app.fxapi.com/register).
 
-Register the api via Dependency Injection:
+Register the client via Dependency Injection:
 
 ``` csharp
 services.AddFreecurrencyAPI(o =>
