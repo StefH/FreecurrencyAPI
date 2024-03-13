@@ -56,12 +56,20 @@ public static class ServiceCollectionExtensions
 
         services.AddMemoryCache();
 
+#if NET8_0_OR_GREATER
+        services.AddScoped<FreecurrencyAPI.Logging.CustomHttpLogger>();
+#endif
+
         services
             .AddHttpClient(options.HttpClientName!, httpClient =>
             {
                 httpClient.BaseAddress = options.BaseAddress;
                 httpClient.Timeout = TimeSpan.FromSeconds(options.TimeoutInSeconds);
             })
+#if NET8_0_OR_GREATER
+            .RemoveAllLoggers()
+            .AddLogger<FreecurrencyAPI.Logging.CustomHttpLogger>(wrapHandlersPipeline: true)
+#endif
             .AddPolicyHandler((serviceProvider, _) => HttpClientRetryPolicies.GetPolicy<IFreecurrencyApiInternal>(serviceProvider, options.MaxRetries, options.HttpStatusCodesToRetry))
             .UseWithRestEaseClient(new UseWithRestEaseClientOptions<IFreecurrencyApiInternal>
             {

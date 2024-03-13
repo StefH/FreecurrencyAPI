@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
@@ -32,6 +33,8 @@ static class Program
         services.AddSingleton(configuration);
         
         services.AddLogging(builder => builder.AddSerilog(logger: Log.Logger, dispose: true));
+
+        // services.AddLogging(l => l.AddConsole());
 
         services.AddFreecurrencyAPI(configuration);
         
