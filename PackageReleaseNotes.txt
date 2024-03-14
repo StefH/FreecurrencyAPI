@@ -1,4 +1,4 @@
-# 0.0.2 (13 March 2024)
+# 0.0.2 (14 March 2024)
 - #2 Add .NET 7 + update dependencies [enhancement]
 
 The full release notes can be found here: https://github.com/StefH/ProtoBufJsonConverter/blob/main/ReleaseNotes.md
