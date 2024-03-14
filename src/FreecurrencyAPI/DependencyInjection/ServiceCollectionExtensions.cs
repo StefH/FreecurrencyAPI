@@ -55,21 +55,13 @@ public static class ServiceCollectionExtensions
         services.AddOptionsWithDataAnnotationValidation(options);
 
         services.AddMemoryCache();
-
-#if NET8_0_OR_GREATER
-        services.AddScoped<FreecurrencyAPI.Logging.CustomHttpLogger>();
-#endif
-
+        
         services
             .AddHttpClient(options.HttpClientName!, httpClient =>
             {
                 httpClient.BaseAddress = options.BaseAddress;
                 httpClient.Timeout = TimeSpan.FromSeconds(options.TimeoutInSeconds);
             })
-#if NET8_0_OR_GREATER
-            .RemoveAllLoggers()
-            .AddLogger<FreecurrencyAPI.Logging.CustomHttpLogger>(wrapHandlersPipeline: true)
-#endif
             .AddPolicyHandler((serviceProvider, _) => HttpClientRetryPolicies.GetPolicy<IFreecurrencyApiInternal>(serviceProvider, options.MaxRetries, options.HttpStatusCodesToRetry))
             .UseWithRestEaseClient(new UseWithRestEaseClientOptions<IFreecurrencyApiInternal>
             {
@@ -79,9 +71,9 @@ public static class ServiceCollectionExtensions
                 }
             });
 
-#if NET8_0_OR_GREATER
-        services.AddSingleton<FreecurrencyAPI.Logging.IRequestPathAndQueryReplacer, FreecurrencyAPI.Logging.RequestPathAndQueryReplacer>();
-#endif
+        // This regex pattern will match any part of a string that starts with "apikey=" (in a case-insensitive manner) followed by any number of characters that are not an ampersand.
+        services.UseSanitizedHttpLogger(o => o.RequestUriReplacements.Add("(?i)apikey=[^&]*", "apikey=***"));
+
         services.AddScoped<IFreecurrencyClient, FreecurrencyClient>();
 
         return services;

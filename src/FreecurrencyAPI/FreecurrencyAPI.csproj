@@ -17,7 +17,6 @@
 		<Title>freecurrencyapi</Title>
 		<Description>This unofficial RestEase client enables working with freecurrencyapi (https://freecurrencyapi.com)</Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
-		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -44,6 +43,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="SanitizedHttpLogger" Version="0.0.1-preview-01" />
 		<PackageReference Include="Stef.Validation.Options" Version="0.1.1" />
 	</ItemGroup>
 
