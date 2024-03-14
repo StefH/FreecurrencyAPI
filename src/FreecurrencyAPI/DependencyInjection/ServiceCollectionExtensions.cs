@@ -79,6 +79,9 @@ public static class ServiceCollectionExtensions
                 }
             });
 
+#if NET8_0_OR_GREATER
+        services.AddSingleton<FreecurrencyAPI.Logging.IRequestPathAndQueryReplacer, FreecurrencyAPI.Logging.RequestPathAndQueryReplacer>();
+#endif
         services.AddScoped<IFreecurrencyClient, FreecurrencyClient>();
 
         return services;

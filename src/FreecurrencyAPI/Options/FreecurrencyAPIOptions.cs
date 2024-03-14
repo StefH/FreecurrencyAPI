@@ -49,4 +49,6 @@ public class FreecurrencyAPIOptions
     /// </summary>
     [Range(0, int.MaxValue)]
     public int GetCurrenciesCacheExpirationInHours { get; set; } = 24;
+
+    public IDictionary<string,string>? RequestPathAndQueryReplacements { get; set; }
 }
