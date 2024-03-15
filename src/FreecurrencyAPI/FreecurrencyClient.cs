@@ -79,27 +79,18 @@ internal class FreecurrencyClient : IFreecurrencyClient
         return (await GetAsync((api, ct) => api.GetCurrenciesAsync(ct), key, cancellationToken)).Data.First().Value;
     }
 
-    public Task<Status> GetStatusAsync(CancellationToken cancellationToken = default)
-    {
-        return _api.GetStatusAsync(cancellationToken);
-    }
+    public Task<Status> GetStatusAsync(CancellationToken cancellationToken = default) => _api.GetStatusAsync(cancellationToken);
 
-    private Task<LatestExchangeRates> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<LatestExchangeRates>> func, string key, CancellationToken cancellationToken)
-    {
-        return GetAsync(func, key, _getLatestExchangeRatesCacheExpirationInSeconds, cancellationToken);
-    }
+    private Task<LatestExchangeRates> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<LatestExchangeRates>> func, string key, CancellationToken cancellationToken) => 
+        GetAsync(func, key, _getLatestExchangeRatesCacheExpirationInSeconds, cancellationToken);
 
-    private Task<Currencies> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<Currencies>> func, string key, CancellationToken cancellationToken)
-    {
-        return GetAsync(func, key, _getCurrenciesCacheExpirationInHours, cancellationToken);
-    }
+    private Task<Currencies> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<Currencies>> func, string key, CancellationToken cancellationToken) => 
+        GetAsync(func, key, _getCurrenciesCacheExpirationInHours, cancellationToken);
 
-    private Task<T> GetAsync<T>(Func<IFreecurrencyApiInternal, CancellationToken, Task<T>> func, string key, TimeSpan absoluteExpirationRelativeToNow, CancellationToken cancellationToken)
-    {
-        return _cache.GetOrCreate(key, async entry =>
+    private Task<T> GetAsync<T>(Func<IFreecurrencyApiInternal, CancellationToken, Task<T>> func, string key, TimeSpan absoluteExpirationRelativeToNow, CancellationToken cancellationToken) =>
+        _cache.GetOrCreate(key, async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = absoluteExpirationRelativeToNow;
             return await func(_api, cancellationToken);
         })!;
-    }
 }
