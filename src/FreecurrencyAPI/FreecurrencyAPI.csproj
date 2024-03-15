@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<Version>0.0.3-preview-02</Version>
 		<PackageId>Freecurrency-API</PackageId>
-		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
 		<ApplicationIcon>../../resources/icon.ico</ApplicationIcon>
 		<Copyright>Copyright © 2024 Stef Heyenrath</Copyright>
 		<Authors>Stef Heyenrath</Authors>
@@ -14,7 +14,6 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
 		<PackageTags>FreecurrencyAPI;Freecurrency;client;rest;api;restease;currency;currencies;rates;foreign exchange rates;exchange rates api;rates api;freecurrencyapi;exchange rates;free currency api;currency api</PackageTags>
-		<Title>freecurrencyapi</Title>
 		<Description>This unofficial RestEase client enables working with freecurrencyapi (https://freecurrencyapi.com)</Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>
@@ -43,10 +42,10 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="SanitizedHttpLogger" Version="0.0.1-preview-03" />
+		<PackageReference Include="SanitizedHttpLogger" Version="0.0.1-preview-05" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.0" />
