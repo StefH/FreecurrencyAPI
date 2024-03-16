@@ -11,7 +11,6 @@ public interface IFreecurrencyClient
     /// <param name="baseCurrency">The base currency to which all results are behaving relative to.</param>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [PublicAPI]
     Task<LatestExchangeRates> GetLatestExchangeRatesAsync(string baseCurrency, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -37,7 +36,6 @@ public interface IFreecurrencyClient
     /// </summary>
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
-    [PublicAPI]
     Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>

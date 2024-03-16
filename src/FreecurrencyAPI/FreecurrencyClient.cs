@@ -29,11 +29,7 @@ internal class FreecurrencyClient : IFreecurrencyClient
 
         var key = $"{nameof(GetLatestExchangeRatesAsync)}_{baseCurrency}";
 
-        return _cache.GetOrCreate(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getLatestExchangeRatesCacheExpirationInSeconds;
-            return await _api.GetLatestExchangeRatesAsync(baseCurrency, cancellationToken);
-        })!;
+        return GetAsync((api, ct) => api.GetLatestExchangeRatesAsync(baseCurrency, ct), key, cancellationToken);
     }
 
     public Task<LatestExchangeRates> GetLatestExchangeRatesAsync(string baseCurrency, string[] currencies, CancellationToken cancellationToken = default)
@@ -44,11 +40,7 @@ internal class FreecurrencyClient : IFreecurrencyClient
         var currenciesAsString = string.Join(",", currencies);
         var key = $"{nameof(GetLatestExchangeRatesAsync)}_{baseCurrency}_{currenciesAsString}";
 
-        return _cache.GetOrCreate(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getLatestExchangeRatesCacheExpirationInSeconds;
-            return await _api.GetLatestExchangeRatesAsync(baseCurrency, currenciesAsString, cancellationToken);
-        })!;
+        return GetAsync((api, ct) => api.GetLatestExchangeRatesAsync(baseCurrency, currenciesAsString, ct), key, cancellationToken);
     }
 
     public Task<LatestExchangeRates> GetLatestExchangeRateAsync(string baseCurrency, string currency, CancellationToken cancellationToken = default)
@@ -58,20 +50,14 @@ internal class FreecurrencyClient : IFreecurrencyClient
 
         var key = $"{nameof(GetLatestExchangeRatesAsync)}_{baseCurrency}_{currency}";
 
-        return _cache.GetOrCreate(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getLatestExchangeRatesCacheExpirationInSeconds;
-            return await _api.GetLatestExchangeRatesAsync(baseCurrency, currency, cancellationToken);
-        })!;
+        return GetAsync((api, ct) => api.GetLatestExchangeRatesAsync(baseCurrency, currency, ct), key, cancellationToken);
     }
 
     public Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default)
     {
-        return _cache.GetOrCreate(nameof(GetCurrenciesAsync), async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getCurrenciesCacheExpirationInHours;
-            return await _api.GetCurrenciesAsync(cancellationToken);
-        })!;
+        const string key = nameof(GetCurrenciesAsync);
+
+        return GetAsync((api, ct) => api.GetCurrenciesAsync(ct), key, cancellationToken);
     }
 
     public Task<Currencies> GetCurrenciesAsync(string[] currencies, CancellationToken cancellationToken = default)
@@ -81,11 +67,7 @@ internal class FreecurrencyClient : IFreecurrencyClient
         var currenciesAsString = string.Join(",", currencies);
         var key = $"{nameof(GetCurrenciesAsync)}_{currenciesAsString}";
 
-        return _cache.GetOrCreate(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getCurrenciesCacheExpirationInHours;
-            return await _api.GetCurrenciesAsync(currenciesAsString, cancellationToken);
-        })!;
+        return GetAsync((api, ct) => api.GetCurrenciesAsync(currenciesAsString, ct), key, cancellationToken);
     }
 
     public async Task<Currency> GetCurrencyAsync(string currency, CancellationToken cancellationToken = default)
@@ -94,15 +76,21 @@ internal class FreecurrencyClient : IFreecurrencyClient
 
         var key = $"{nameof(GetCurrenciesAsync)}_{currency}";
 
-        return await _cache.GetOrCreate(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = _getCurrenciesCacheExpirationInHours;
-            return (await _api.GetCurrenciesAsync(cancellationToken)).Data.First().Value;
-        })!;
+        return (await GetAsync((api, ct) => api.GetCurrenciesAsync(ct), key, cancellationToken)).Data.First().Value;
     }
 
-    public Task<Status> GetStatusAsync(CancellationToken cancellationToken = default)
-    {
-        return _api.GetStatusAsync(cancellationToken);
-    }
+    public Task<Status> GetStatusAsync(CancellationToken cancellationToken = default) => _api.GetStatusAsync(cancellationToken);
+
+    private Task<LatestExchangeRates> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<LatestExchangeRates>> func, string key, CancellationToken cancellationToken) => 
+        GetAsync(func, key, _getLatestExchangeRatesCacheExpirationInSeconds, cancellationToken);
+
+    private Task<Currencies> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<Currencies>> func, string key, CancellationToken cancellationToken) => 
+        GetAsync(func, key, _getCurrenciesCacheExpirationInHours, cancellationToken);
+
+    private Task<T> GetAsync<T>(Func<IFreecurrencyApiInternal, CancellationToken, Task<T>> func, string key, TimeSpan absoluteExpirationRelativeToNow, CancellationToken cancellationToken) =>
+        _cache.GetOrCreate(key, async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = absoluteExpirationRelativeToNow;
+            return await func(_api, cancellationToken);
+        })!;
 }

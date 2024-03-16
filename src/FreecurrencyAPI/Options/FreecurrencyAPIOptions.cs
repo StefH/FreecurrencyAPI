@@ -2,6 +2,7 @@
 
 namespace FreecurrencyAPI.Options;
 
+[PublicAPI]
 public class FreecurrencyAPIOptions
 {
     /// <summary>
