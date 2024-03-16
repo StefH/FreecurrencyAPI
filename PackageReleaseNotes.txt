@@ -1,4 +1,4 @@
-# 0.0.2 (14 March 2024)
-- #2 Add .NET 7 + update dependencies [enhancement]
+# 0.0.3 (16 March 2024)
+- #3 Sanitize the Http Client Logging (replace apikey in RequestUri) [enhancement]
 
-The full release notes can be found here: https://github.com/StefH/ProtoBufJsonConverter/blob/main/ReleaseNotes.md
+The full release notes can be found here: https://github.com/StefH/FreecurrencyAPI/blob/main/ReleaseNotes.md
