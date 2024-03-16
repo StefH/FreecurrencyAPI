@@ -3,7 +3,6 @@ using RestEase;
 
 namespace FreecurrencyAPI.Internal;
 
-[PublicAPI]
 internal interface IFreecurrencyApiInternal
 {
     [Query("apikey")]
@@ -17,7 +16,6 @@ internal interface IFreecurrencyApiInternal
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
     [Get("/latest")]
-    [PublicAPI]
     Task<LatestExchangeRates> GetLatestExchangeRatesAsync([Query("base_currency")] string baseCurrency, [Query] string currencies, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -27,7 +25,6 @@ internal interface IFreecurrencyApiInternal
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
     [Get("/latest")]
-    [PublicAPI]
     Task<LatestExchangeRates> GetLatestExchangeRatesAsync([Query("base_currency")] string baseCurrency, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -36,7 +33,6 @@ internal interface IFreecurrencyApiInternal
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
     [Get("/currencies")]
-    [PublicAPI]
     Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -46,7 +42,6 @@ internal interface IFreecurrencyApiInternal
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
     [Get("/currencies")]
-    [PublicAPI]
     Task<Currencies> GetCurrenciesAsync([Query] string currencies, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -55,6 +50,5 @@ internal interface IFreecurrencyApiInternal
     /// <param name="cancellationToken">The <see cref="CancellationToken"/></param>
     /// <returns><see cref="LatestExchangeRates"/></returns>
     [Get("/status")]
-    [PublicAPI]
     Task<Status> GetStatusAsync(CancellationToken cancellationToken = default);
 }

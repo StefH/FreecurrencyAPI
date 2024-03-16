@@ -55,7 +55,7 @@ internal class FreecurrencyClient : IFreecurrencyClient
 
     public Task<Currencies> GetCurrenciesAsync(CancellationToken cancellationToken = default)
     {
-        var key = nameof(GetCurrenciesAsync);
+        const string key = nameof(GetCurrenciesAsync);
 
         return GetAsync((api, ct) => api.GetCurrenciesAsync(ct), key, cancellationToken);
     }

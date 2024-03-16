@@ -71,7 +71,8 @@ public static class ServiceCollectionExtensions
                 }
             });
 
-        // This regex pattern will match any part of a string that starts with "apikey=" (in a case-insensitive manner) followed by any number of characters that are not an ampersand.
+        // This regex pattern will match any part of a string that starts with "apikey=" (in a case-insensitive manner)
+        // followed by any number of characters that are not an ampersand.
         services.UseSanitizedHttpLogger(o => o.RequestUriReplacements.Add("(?i)apikey=[^&]*", "apikey=***"));
 
         services.AddScoped<IFreecurrencyClient, FreecurrencyClient>();
