@@ -45,11 +45,11 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' != 'net8.0' ">
-		<PackageReference Include="SanitizedHttpLogger" Version="0.0.2-preview-01" />
+		<PackageReference Include="SanitizedHttpLogger" Version="0.0.2" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-		<PackageReference Include="SanitizedHttpClientLogger" Version="0.0.2-preview-01" />
+		<PackageReference Include="SanitizedHttpClientLogger" Version="0.0.2" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
