@@ -12,6 +12,11 @@ namespace Microsoft.Extensions.DependencyInjection;
 [PublicAPI]
 public static class ServiceCollectionExtensions
 {
+    // This regex pattern will match any part of a string that starts with "apikey=" (in a case-insensitive manner) followed by any number of characters that are not an ampersand.
+    [RegexPattern]
+    private const string RegexMatch = "(?i)apikey=[^&]*";
+    private const string RegexReplacement = "apikey=***";
+
     public static IServiceCollection AddFreecurrencyAPI(this IServiceCollection services, IConfiguration configuration)
     {
         Guard.NotNull(services);
@@ -69,11 +74,15 @@ public static class ServiceCollectionExtensions
                 {
                     freecurrencyAPI.ApiKey = options.ApiKey;
                 }
-            });
+            })
+#if NET8_0_OR_GREATER
+            .ConfigureSanitizedLogging(o => o.RequestUriReplacements.Add(RegexMatch, RegexReplacement))
+#endif
+            ;
 
-        // This regex pattern will match any part of a string that starts with "apikey=" (in a case-insensitive manner)
-        // followed by any number of characters that are not an ampersand.
-        services.UseSanitizedHttpLogger(o => o.RequestUriReplacements.Add("(?i)apikey=[^&]*", "apikey=***"));
+#if !NET8_0_OR_GREATER
+        services.UseSanitizedHttpLogger(o => o.RequestUriReplacements.Add(RegexMatch, RegexReplacement));
+#endif
 
         services.AddScoped<IFreecurrencyClient, FreecurrencyClient>();
 

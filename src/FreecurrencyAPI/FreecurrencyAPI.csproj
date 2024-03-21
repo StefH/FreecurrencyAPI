@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.0.3</Version>
+		<Version>0.0.4</Version>
 		<PackageId>Freecurrency-API</PackageId>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
 		<ApplicationIcon>../../resources/icon.ico</ApplicationIcon>
 		<Copyright>Copyright © 2024 Stef Heyenrath</Copyright>
 		<Authors>Stef Heyenrath</Authors>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageReleaseNotes>See ReleaseNotes.md</PackageReleaseNotes>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../PackageReleaseNotes.txt"))</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/StefH/FreecurrencyAPI</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryType>git</RepositoryType>
@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,7 +42,14 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="SanitizedHttpLogger" Version="0.0.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' != 'net8.0' ">
+		<PackageReference Include="SanitizedHttpLogger" Version="0.0.3" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+		<PackageReference Include="SanitizedHttpClientLogger" Version="0.0.3" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
