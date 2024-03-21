@@ -1,4 +1,4 @@
-# 0.0.3 (16 March 2024)
-- #3 Sanitize the Http Client Logging (replace apikey in RequestUri) [enhancement]
+# 0.0.4 (21 March 2024)
+- #4 Use SanitizedHttpClientLogger for .NET 8 [enhancement]
 
 The full release notes can be found here: https://github.com/StefH/FreecurrencyAPI/blob/main/ReleaseNotes.md

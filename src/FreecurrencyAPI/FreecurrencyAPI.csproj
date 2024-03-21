@@ -14,7 +14,7 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/StefH/FreecurrencyAPI</RepositoryUrl>
 		<PackageTags>FreecurrencyAPI;Freecurrency;client;rest;api;restease;currency;currencies;rates;foreign exchange rates;exchange rates api;rates api;freecurrencyapi;exchange rates;free currency api;currency api</PackageTags>
-		<Description>This unofficial RestEase client enables working with freecurrencyapi (https://freecurrencyapi.com)</Description>
+		<Description>This unofficial (RestEase based) client enables working with freecurrencyapi (https://freecurrencyapi.com)</Description>
 		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>
 
