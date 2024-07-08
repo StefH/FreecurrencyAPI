@@ -10,8 +10,8 @@ internal class FreecurrencyClient : IFreecurrencyClient
 {
     private readonly IFreecurrencyApiInternal _api;
     private readonly IMemoryCache _cache;
-    private readonly TimeSpan _getLatestExchangeRatesCacheExpirationInSeconds;
-    private readonly TimeSpan _getCurrenciesCacheExpirationInHours;
+    private readonly TimeSpan _getLatestExchangeRatesCacheExpirationTimeSpan;
+    private readonly TimeSpan _getCurrenciesCacheExpirationTimeSpan;
 
     public FreecurrencyClient(IOptions<FreecurrencyAPIOptions> options, IFreecurrencyApiInternal api, IMemoryCache cache)
     {
@@ -19,8 +19,8 @@ internal class FreecurrencyClient : IFreecurrencyClient
         _api = Guard.NotNull(api);
         _cache = Guard.NotNull(cache);
 
-        _getLatestExchangeRatesCacheExpirationInSeconds = TimeSpan.FromSeconds(options.Value.GetLatestExchangeRatesCacheExpirationInMinutes);
-        _getCurrenciesCacheExpirationInHours = TimeSpan.FromSeconds(options.Value.GetCurrenciesCacheExpirationInHours);
+        _getLatestExchangeRatesCacheExpirationTimeSpan = TimeSpan.FromMinutes(options.Value.GetLatestExchangeRatesCacheExpirationInMinutes);
+        _getCurrenciesCacheExpirationTimeSpan = TimeSpan.FromHours(options.Value.GetCurrenciesCacheExpirationInHours);
     }
 
     public Task<LatestExchangeRates> GetLatestExchangeRatesAsync(string baseCurrency, CancellationToken cancellationToken = default)
@@ -82,10 +82,10 @@ internal class FreecurrencyClient : IFreecurrencyClient
     public Task<Status> GetStatusAsync(CancellationToken cancellationToken = default) => _api.GetStatusAsync(cancellationToken);
 
     private Task<LatestExchangeRates> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<LatestExchangeRates>> func, string key, CancellationToken cancellationToken) => 
-        GetAsync(func, key, _getLatestExchangeRatesCacheExpirationInSeconds, cancellationToken);
+        GetAsync(func, key, _getLatestExchangeRatesCacheExpirationTimeSpan, cancellationToken);
 
     private Task<Currencies> GetAsync(Func<IFreecurrencyApiInternal, CancellationToken, Task<Currencies>> func, string key, CancellationToken cancellationToken) => 
-        GetAsync(func, key, _getCurrenciesCacheExpirationInHours, cancellationToken);
+        GetAsync(func, key, _getCurrenciesCacheExpirationTimeSpan, cancellationToken);
 
     private Task<T> GetAsync<T>(Func<IFreecurrencyApiInternal, CancellationToken, Task<T>> func, string key, TimeSpan absoluteExpirationRelativeToNow, CancellationToken cancellationToken) =>
         _cache.GetOrCreate(key, async entry =>
