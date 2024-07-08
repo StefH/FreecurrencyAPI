@@ -1,3 +1,7 @@
+# 0.1.0 (08 July 2024)
+- [#6](https://github.com/StefH/FreecurrencyAPI/pull/6) - Fixing cache expiration timespans [bug] contributed by [wearysky](https://github.com/wearysky)
+- [#5](https://github.com/StefH/FreecurrencyAPI/issues/5) - Cache expiration timespans are using incorrect units when creating FreecurrencyClient [bug]
+
 # 0.0.4 (21 March 2024)
 - [#4](https://github.com/StefH/FreecurrencyAPI/pull/4) - Use SanitizedHttpClientLogger for .NET 8 [enhancement] contributed by [StefH](https://github.com/StefH)
 
