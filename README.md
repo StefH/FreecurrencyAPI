@@ -2,7 +2,7 @@
 Unofficial [RestEase](https://github.com/canton7/RestEase) C# Client for [freecurrencyapi](https://app.freecurrencyapi.com) which uses [IMemoryCache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory) to cache the results.
 
 ## NuGet
-[![NuGet Badge](https://buildstats.info/nuget/Freecurrency-API)](https://www.nuget.org/packages/Freecurrency-API) 
+[![NuGet Badge](https://img.shields.io/nuget/v/Freecurrency-API)](https://www.nuget.org/packages/Freecurrency-API) 
 
 ## Configuration
 
