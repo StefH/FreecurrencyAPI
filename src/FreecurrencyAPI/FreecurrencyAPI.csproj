@@ -5,7 +5,7 @@
 		<PackageId>Freecurrency-API</PackageId>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
 		<ApplicationIcon>../../resources/icon.ico</ApplicationIcon>
-		<Copyright>Copyright © 2024 Stef Heyenrath</Copyright>
+		<Copyright>Copyright © Stef Heyenrath</Copyright>
 		<Authors>Stef Heyenrath</Authors>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../PackageReleaseNotes.txt"))</PackageReleaseNotes>
@@ -58,7 +58,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.3" />
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.0" />
 	</ItemGroup>
 
@@ -68,7 +68,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.0" />
 	</ItemGroup>
 
