@@ -1,4 +1,4 @@
-# Freecurrency-API
+# ![icon](./resources/icon_32x32.png) Freecurrency-API
 Unofficial [RestEase](https://github.com/canton7/RestEase) C# Client for [freecurrencyapi](https://app.freecurrencyapi.com) which uses [IMemoryCache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory) to cache the results.
 
 ## NuGet
