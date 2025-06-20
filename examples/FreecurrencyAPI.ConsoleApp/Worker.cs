@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using FreecurrencyAPI.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Polly.Caching;
 
 namespace FreecurrencyAPI.ConsoleApp;
 
