@@ -1,3 +1,6 @@
+# 0.1.1 (20 June 2025)
+- [#7](https://github.com/StefH/FreecurrencyAPI/pull/7) - Update some NuGet packages + add sponsor [enhancement] contributed by [StefH](https://github.com/StefH)
+
 # 0.1.0 (08 July 2024)
 - [#6](https://github.com/StefH/FreecurrencyAPI/pull/6) - Fixing cache expiration timespans [bug] contributed by [wearysky](https://github.com/wearysky)
 - [#5](https://github.com/StefH/FreecurrencyAPI/issues/5) - Cache expiration timespans are using incorrect units when creating FreecurrencyClient [bug]
